@@ -13,7 +13,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import formatToUSD from "@/helpers/currencyFormatter";
 
-function page() {
+function Page() {
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -43,7 +43,7 @@ function page() {
     <div className="flex">
       <div className="w-[85%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:w-4/6 mx-auto">
         {products.map((pro) => (
-      <Card className="w-[100%] overflow-hidden flex flex-col">
+      <Card className="w-[100%] overflow-hidden flex flex-col" key={pro.id}>
         <div className="flex-grow">
           <img 
             src={pro.image}
@@ -55,10 +55,10 @@ function page() {
           </CardHeader>
         </div>
           <CardContent>
-            <p className="text-3xl font-bold">{formatToUSD(pro.price)}</p>
+            <p className="text-2xl font-semibold">{formatToUSD(pro.price)}</p>
           </CardContent>
         <CardFooter className="mt-auto">
-          <Button className="w-full">Ver más</Button>
+          <Button className="w-full bg-[#5046e5] hover:bg-[#4438ca]">View more</Button>
         </CardFooter>
       </Card>
         ))}
@@ -68,4 +68,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
