@@ -56,7 +56,7 @@ export default function RootLayout({
                 </SheetHeader>
                 <nav className="flex flex-col space-y-4 mt-4">
                   {navigation.map((nav) => (
-                    <Link href={nav.href} className="p-2">{nav.name}</Link>
+                    <Link href={nav.href} className="p-2" key={nav.name}>{nav.name}</Link>
                   ))}
                 </nav>
               </SheetContent>
