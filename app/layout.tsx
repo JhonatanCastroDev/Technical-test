@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetClose ,SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 
@@ -37,10 +37,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}
       >
-      <header className="fixed inset-x-0 top-0 z-50 bg-[#5046e5]">
+      <header className="fixed lg:absolute inset-x-0 top-0 z-50 bg-[#5046e5]">
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8 text-white">
           <div className="flex lg:flex-1">
-            <Link href='/' className="p-2 text-lg font-semibold">The Product Vault</Link>
+            <Link href='/' className="p-2 text-xl font-semibold">The Product Vault</Link>
           </div>
           <div className="flex lg:hidden">
             <Sheet>
@@ -56,7 +56,9 @@ export default function RootLayout({
                 </SheetHeader>
                 <nav className="flex flex-col space-y-4 mt-4">
                   {navigation.map((nav) => (
-                    <Link href={nav.href} className="p-2" key={nav.name}>{nav.name}</Link>
+                    <SheetClose asChild>
+                      <Link href={nav.href} className="p-2 active:bg-gray-400 active:text-white rounded-lg" key={nav.name}>{nav.name}</Link>
+                    </SheetClose>
                   ))}
                 </nav>
               </SheetContent>
@@ -64,13 +66,13 @@ export default function RootLayout({
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-lg font-semibold leading-6 text-white p-2">
+              <a key={item.name} href={item.href} className="text-xl font-semibold leading-6 text-white p-2">
                 {item.name}
               </a>
             ))}
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end text-lg">
-            <h2 className="font-semibold text-lg">Jhonatan Castro</h2>
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end text-xl">
+            <h2 className="font-semibold text-xl">Jhonatan Castro</h2>
           </div>
         </nav>
       </header>
