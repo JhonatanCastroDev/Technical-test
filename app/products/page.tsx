@@ -15,7 +15,6 @@ import formatToUSD from "@/helpers/currencyFormatter";
 
 function Page() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -24,9 +23,7 @@ function Page() {
         setProducts(productsData);
       } catch (err) {
         if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError('Error desconocido');
+          console.log(err.message);
         }
       }
     };
