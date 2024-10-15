@@ -2,7 +2,6 @@
 import { fetchProducts } from "@/hooks/useGetProducts"
 import { Product } from "@/schemas/productSchema";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -12,6 +11,7 @@ import {
 } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator";
 import formatToUSD from "@/helpers/currencyFormatter";
+import DetailsModal from "@/components/DetailsModal";
 
 function Page() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -34,7 +34,7 @@ function Page() {
     <>
     <div className="mt-14 w-11/12 mx-auto">
       <h1 className="text-4xl font-bold">Products</h1>
-      <p className="mt-4 text-base text-gray-500">Checkout out the latest release of our shop, explore all the products we have for you!</p>
+      <p className="mt-4 text-base text-gray-500">Check out the latest release of our shop, explore all the products we have for you!</p>
     </div>
     <Separator className="my-12 w-11/12 mx-auto" />
     <div className="flex">
@@ -45,7 +45,7 @@ function Page() {
           <img 
             src={pro.image}
             alt={pro.title}
-            className="w-full h-[200px] object-contain"
+            className="w-full h-[200px] object-contain mt-4"
           />
           <CardHeader>
             <CardTitle className="text-2xl">{pro.title}</CardTitle>
@@ -55,7 +55,9 @@ function Page() {
             <p className="text-2xl font-semibold">{formatToUSD(pro.price)}</p>
           </CardContent>
         <CardFooter className="mt-auto">
-          <Button className="w-full bg-[#5046e5] hover:bg-[#4438ca]">View more</Button>
+          <DetailsModal
+            product={pro}
+          />
         </CardFooter>
       </Card>
         ))}
