@@ -33,13 +33,13 @@ const DetailsModal = ({product} : {product : Product}) => {
         <DialogTrigger asChild>
             <Button className="w-full bg-[#5046e5] hover:bg-[#4438ca]">View more</Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[450px] h-fit block">
+        <DialogContent className="sm:max-w-[450px] h-fit block max-w-[90vw] rounded-lg">
           <DialogHeader>
             <div className="w-full mb-4 h-fit">
               <img
                 src={product.image}
                 alt={product.title}
-                className="w-full max-h-[400px] object-contain rounded-lg"
+                className="w-full max-h-[270px] object-contain rounded-lg"
               />
             </div>
             <DialogTitle className="text-2xl font-bold">{product.title}</DialogTitle>
