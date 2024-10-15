@@ -52,7 +52,7 @@ const DetailsModal = ({product} : {product : Product}) => {
                 <span className="ml-2 text-sm text-gray-600">({product.rating.count})</span>
               </div>
             </div>
-            <DialogDescription>
+            <DialogDescription className="max-h-20 overflow-y-scroll">
               {product.description}
             </DialogDescription>
             <div>

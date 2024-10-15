@@ -13,5 +13,7 @@ export const productSchema = z.object({
     count: z.number(),
   }),
 });
+export const categoriesSchema = z.string().array()
 
 export type Product = z.infer<typeof productSchema>;
+export type Categories = z.infer<typeof categoriesSchema>
