@@ -37,7 +37,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}
       >
-      <header className="absolute inset-x-0 top-0 z-50 bg-[#5046e5]">
+      <header className="fixed inset-x-0 top-0 z-50 bg-[#5046e5]">
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8 text-white">
           <div className="flex lg:flex-1">
             <Link href='/' className="p-2 text-lg font-semibold">The Product Vault</Link>
