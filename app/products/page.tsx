@@ -136,7 +136,7 @@ function Page() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="w-[85%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:w-5/6 mx-auto lg:mx-0">
+      <div className="w-[85%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:w-5/6 mx-auto lg:mx-0 mb-4">
         {products.map((pro) => (
       <Card className="w-[100%] overflow-hidden flex flex-col" key={pro.id}>
         <div className="flex-grow">
