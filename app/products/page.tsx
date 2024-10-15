@@ -20,6 +20,7 @@ function Page() {
   const [originalProducts, setOriginalProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Categories>([]);
 
+  // first general load
   useEffect(() => {
     const loadProducts = async () => {
       try {
@@ -49,6 +50,7 @@ function Page() {
     loadCategories()
   }, []);
 
+  //filter all the products by category
   const loadProductsByCategory = async (category : string) => {
     try {
       const products = await fetchProductsByCategory(category)
@@ -93,7 +95,7 @@ function Page() {
     <div className="flex flex-col lg:flex-row justify-between w-11/12 mx-auto">
       <div className="flex justify-center gap-4 mb-8 lg:justify-start lg:flex-col">
         <DropdownMenu>
-          <DropdownMenuTrigger className="flex items-center text-sm font-medium text-gray-900 hover:text-gray-700 p-3 lg:pr-8 text-left">
+          <DropdownMenuTrigger className="flex items-center text-sm font-medium text-gray-900 hover:text-gray-700 p-3 lg:pr-8 text-left border border-gray-200">
             Sort by:
             <ChevronDown className="ml-1 h-4 w-4" />
           </DropdownMenuTrigger>
@@ -118,17 +120,17 @@ function Page() {
         </DropdownMenu>
         <Separator className=" hidden lg:block"/>
         <DropdownMenu>
-          <DropdownMenuTrigger className="flex items-center text-sm font-medium text-gray-900 hover:text-gray-700 p-2">
+          <DropdownMenuTrigger className="flex items-center text-sm font-medium text-gray-900 hover:text-gray-700 p-3 border border-gray-200">
             Categories:
             <ChevronDown className="ml-1 h-4 w-4" />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-40">
           <DropdownMenuItem onClick={filterAllProducts}>
-              <span>all</span>
+              <span>All</span>
             </DropdownMenuItem>
             {categories.map((cat) => (
               <DropdownMenuItem key={cat} onClick={() => loadProductsByCategory(cat)}>
-              <span>{cat}</span>
+              <span className="first-letter:uppercase">{cat}</span>
             </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
