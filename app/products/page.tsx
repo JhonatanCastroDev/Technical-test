@@ -2,10 +2,17 @@
 import { fetchProducts } from "@/hooks/useGetProducts"
 import { Product } from "@/schemas/productSchema";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 function page() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -19,19 +26,36 @@ function page() {
         } else {
           setError('Error desconocido');
         }
-      } finally {
-        setLoading(false);
       }
     };
 
     loadProducts();
   }, []);
   return (
-    <div>
+    <>
+    <div className="w-[85%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:w-4/6 mx-auto">
       {products.map((pro) => (
-        <h3>{pro.title}</h3>
+    <Card className="w-[100%] overflow-hidden flex flex-col">
+      <div className="flex-grow">
+        <img 
+          src={pro.image}
+          alt={pro.title}
+          className="w-full h-[200px] object-contain"
+        />
+        <CardHeader>
+          <CardTitle className="text-2xl">{pro.title}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-3xl font-bold">{pro.price}</p>
+        </CardContent>
+      </div>
+      <CardFooter className="mt-auto">
+        <Button className="w-full">Ver más</Button>
+      </CardFooter>
+    </Card>
       ))}
     </div>
+    </>
   )
 }
 
